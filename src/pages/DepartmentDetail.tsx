@@ -99,13 +99,13 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
     incrementToolUsage(tool.id);
     
     // Verify the URL before opening
-    if (!tool.url || tool.url === '#' || tool.url === 'https://example.com/tool10' || tool.url === 'https://example.com/tool18') {
+    if (!tool.url || tool.url === '#') {
       toast.error("This link appears to be broken. Please contact IT support.");
       return;
     }
     
     // Open the URL in a new tab
-    window.open(tool.url, '_blank');
+    window.open(tool.url, '_blank', 'noopener,noreferrer');
     
     // Provide feedback
     toast.success(`Opening ${tool.name}...`);
@@ -122,8 +122,10 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
             onClick={(e) => {
               e.preventDefault();
               toggleBookmark();
+              toast.success(isBookmarked ? `Removed ${tool.name} from bookmarks` : `Added ${tool.name} to bookmarks`);
             }}
             className="text-yellow-500 hover:text-yellow-600 -mt-1 -mr-2"
+            aria-label={isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
           >
             {isBookmarked ? (
               <Star className="h-5 w-5 fill-yellow-500" />
@@ -147,6 +149,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
         <Button 
           className="w-full"
           onClick={handleToolClick}
+          aria-label={`Open ${tool.name} in new tab`}
         >
           <ExternalLink className="h-4 w-4 mr-2" />
           Go to Tool

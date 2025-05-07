@@ -49,6 +49,14 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             <Menu className="h-5 w-5" />
           </Button>
           
+          <div className="hidden sm:flex items-center mr-4">
+            <img 
+              src="/lovable-uploads/954e59d8-c8b1-4160-b352-4dbcaab5d504.png" 
+              alt="Spritle Logo" 
+              className="h-6 mr-2"
+            />
+          </div>
+          
           <form onSubmit={handleSearch} className="hidden md:flex">
             <div className="relative">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />

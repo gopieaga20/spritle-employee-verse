@@ -27,9 +27,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     )}>
       <div className="p-4 flex items-center">
         <div className="flex items-center space-x-2">
-          <div className="bg-spritle-blue rounded-lg p-1">
-            <span className="text-white font-bold text-xl">S</span>
-          </div>
+          <img 
+            src="/lovable-uploads/954e59d8-c8b1-4160-b352-4dbcaab5d504.png" 
+            alt="Spritle Logo" 
+            className="h-8"
+          />
           <span className="font-bold text-lg text-gray-900 dark:text-white">
             Spritle Verse
           </span>

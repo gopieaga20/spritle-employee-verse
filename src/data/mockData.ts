@@ -1,6 +1,4 @@
 
-import { v4 as uuidv4 } from 'uuid';
-
 // Department interface
 export interface Department {
   id: string;
@@ -101,11 +99,11 @@ export const departments: Department[] = [
   }
 ];
 
-// Tools data - generating mock tools for each department
+// Tools data with predefined IDs instead of dynamic generation
 export const tools: Tool[] = [
   // Administrative & HRM tools
   {
-    id: uuidv4(),
+    id: "tool-1",
     name: "Spritle Recruit",
     description: "Internal recruitment and candidate management replacing Zoho AI Recruitment",
     url: "https://example.com/tool1",
@@ -113,7 +111,7 @@ export const tools: Tool[] = [
     tags: ["Recruitment", "HR", "Candidate Management"]
   },
   {
-    id: uuidv4(),
+    id: "tool-2",
     name: "HR Assistant",
     description: "AI-powered employee onboarding and documentation assistant",
     url: "https://example.com/tool2",
@@ -123,7 +121,7 @@ export const tools: Tool[] = [
   
   // Sales tools
   {
-    id: uuidv4(),
+    id: "tool-3",
     name: "Spritle Leads",
     description: "Internal lead generation and enrichment platform replacing Clay AI",
     url: "https://example.com/tool3",
@@ -131,7 +129,7 @@ export const tools: Tool[] = [
     tags: ["Leads", "CRM", "Sales"]
   },
   {
-    id: uuidv4(),
+    id: "tool-4",
     name: "Sales Predictor",
     description: "Sales forecasting and pipeline management replacing Apollo AI",
     url: "https://example.com/tool4",
@@ -141,7 +139,7 @@ export const tools: Tool[] = [
   
   // Marketing tools
   {
-    id: uuidv4(),
+    id: "tool-5",
     name: "Campaign Manager",
     description: "Marketing campaign automation and analysis replacing HubSpot AI",
     url: "https://example.com/tool5",
@@ -149,7 +147,7 @@ export const tools: Tool[] = [
     tags: ["Campaigns", "Automation", "Analytics"]
   },
   {
-    id: uuidv4(),
+    id: "tool-6",
     name: "Content Generator",
     description: "AI-powered content creation and optimization for marketing",
     url: "https://example.com/tool6",
@@ -159,7 +157,7 @@ export const tools: Tool[] = [
   
   // Finance tools
   {
-    id: uuidv4(),
+    id: "tool-7",
     name: "Finance Assistant",
     description: "Automated bookkeeping and financial reporting replacing Booke AI",
     url: "https://example.com/tool7",
@@ -167,7 +165,7 @@ export const tools: Tool[] = [
     tags: ["Bookkeeping", "Reporting", "Finance"]
   },
   {
-    id: uuidv4(),
+    id: "tool-8",
     name: "Tax Helper",
     description: "Tax preparation and compliance tool replacing Keeper AI",
     url: "https://example.com/tool8",
@@ -177,7 +175,7 @@ export const tools: Tool[] = [
   
   // Support tools
   {
-    id: uuidv4(),
+    id: "tool-9",
     name: "Support Bot",
     description: "Customer support automation replacing Zendesk AI",
     url: "https://example.com/tool9",
@@ -185,7 +183,7 @@ export const tools: Tool[] = [
     tags: ["Support", "Automation", "Customer Service"]
   },
   {
-    id: uuidv4(),
+    id: "tool-10",
     name: "Ticket Analyzer",
     description: "Support ticket classification and prioritization",
     url: "https://example.com/tool10",
@@ -195,7 +193,7 @@ export const tools: Tool[] = [
   
   // Pre-Sales tools
   {
-    id: uuidv4(),
+    id: "tool-11",
     name: "Client Insights",
     description: "Client personality and preference analysis replacing Crystal Knows",
     url: "https://example.com/tool11",
@@ -203,7 +201,7 @@ export const tools: Tool[] = [
     tags: ["Client Analysis", "Insights", "Sales"]
   },
   {
-    id: uuidv4(),
+    id: "tool-12",
     name: "Solution Builder",
     description: "Automated solution architecture and proposal generation",
     url: "https://example.com/tool12",
@@ -213,7 +211,7 @@ export const tools: Tool[] = [
   
   // Business Analyst tools
   {
-    id: uuidv4(),
+    id: "tool-13",
     name: "User Story Creator",
     description: "Automated user story generation replacing Userstorygenerator AI",
     url: "https://example.com/tool13",
@@ -221,7 +219,7 @@ export const tools: Tool[] = [
     tags: ["User Stories", "Requirements", "Analysis"]
   },
   {
-    id: uuidv4(),
+    id: "tool-14",
     name: "Process Mapper",
     description: "Business process documentation and analysis replacing Scribe AI",
     url: "https://example.com/tool14",
@@ -231,7 +229,7 @@ export const tools: Tool[] = [
   
   // Development tools
   {
-    id: uuidv4(),
+    id: "tool-15",
     name: "Code Assistant",
     description: "Code completion and suggestion tool replacing GitHub Copilot",
     url: "https://example.com/tool15",
@@ -239,7 +237,7 @@ export const tools: Tool[] = [
     tags: ["Coding", "AI", "Development"]
   },
   {
-    id: uuidv4(),
+    id: "tool-16",
     name: "Code Reviewer",
     description: "Automated code review and quality assurance",
     url: "https://example.com/tool16",
@@ -249,7 +247,7 @@ export const tools: Tool[] = [
   
   // QA tools
   {
-    id: uuidv4(),
+    id: "tool-17",
     name: "Test Generator",
     description: "Automated test case generation replacing TestRigor",
     url: "https://example.com/tool17",
@@ -257,7 +255,7 @@ export const tools: Tool[] = [
     tags: ["Testing", "Automation", "QA"]
   },
   {
-    id: uuidv4(),
+    id: "tool-18",
     name: "Bug Predictor",
     description: "AI-powered bug prediction and prevention",
     url: "https://example.com/tool18",
@@ -267,7 +265,7 @@ export const tools: Tool[] = [
   
   // Data Science tools
   {
-    id: uuidv4(),
+    id: "tool-19",
     name: "Data Visualizer",
     description: "Advanced data visualization platform replacing Tableau AI",
     url: "https://example.com/tool19",
@@ -275,7 +273,7 @@ export const tools: Tool[] = [
     tags: ["Visualization", "Analytics", "Data"]
   },
   {
-    id: uuidv4(),
+    id: "tool-20",
     name: "Insight Generator",
     description: "Automated data insights and reporting replacing Power BI Copilot",
     url: "https://example.com/tool20",
@@ -285,7 +283,7 @@ export const tools: Tool[] = [
   
   // Cloud tools
   {
-    id: uuidv4(),
+    id: "tool-21",
     name: "Cloud Optimizer",
     description: "AI-driven cloud resource optimization replacing AWS AI",
     url: "https://example.com/tool21",
@@ -293,7 +291,7 @@ export const tools: Tool[] = [
     tags: ["Optimization", "Cloud", "Resources"]
   },
   {
-    id: uuidv4(),
+    id: "tool-22",
     name: "Security Analyzer",
     description: "Cloud security posture management and analysis",
     url: "https://example.com/tool22",

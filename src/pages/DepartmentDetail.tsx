@@ -112,7 +112,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
   };
 
   return (
-    <Card className="hover-card">
+    <Card className="hover-card flex flex-col h-full">
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
           <CardTitle className="text-lg font-medium">{tool.name}</CardTitle>
@@ -136,7 +136,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
         </div>
         <CardDescription>{tool.description}</CardDescription>
       </CardHeader>
-      <CardContent className="pb-2">
+      <CardContent className="pb-2 flex-grow">
         <div className="flex flex-wrap gap-1">
           {tool.tags.map((tag, index) => (
             <Badge key={index} variant="secondary" className="bg-gray-100 dark:bg-gray-800">
@@ -145,7 +145,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
           ))}
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="mt-auto">
         <Button 
           className="w-full"
           onClick={handleToolClick}

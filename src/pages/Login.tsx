@@ -54,9 +54,10 @@ const Login = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <img 
-              src="https://placekitten.com/100/100" 
+              src="/lovable-uploads/954e59d8-c8b1-4160-b352-4dbcaab5d504.png" 
               alt="Spritle Logo" 
-              className="w-20 h-20 rounded-full border-4 border-spritle-blue" 
+              className="w-24 h-auto object-contain"
+              aria-label="Spritle Software company logo"
             />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Spritle Employee Verse</h1>

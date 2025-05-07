@@ -19,6 +19,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
+import Analytics from "./pages/Analytics"; // Import the new Analytics page
 
 // Layout
 import MainLayout from "./components/MainLayout";
@@ -67,6 +68,7 @@ const AppRoutes = () => (
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/analytics" element={<Analytics />} /> {/* Add the Analytics route */}
     </Route>
     
     <Route path="/" element={<Navigate to="/dashboard" replace />} />

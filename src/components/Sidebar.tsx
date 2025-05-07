@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/context/AuthContext';
-import { LayoutDashboard, Bookmark, HelpCircle, User, Settings } from 'lucide-react';
+import { LayoutDashboard, Bookmark, HelpCircle, User, Settings, BarChart2 } from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -46,6 +46,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             </NavItem>
             <NavItem icon={<Bookmark size={18} />} to="/bookmarks">
               Bookmarked Tools
+            </NavItem>
+            <NavItem icon={<BarChart2 size={18} />} to="/analytics">
+              Analytics
             </NavItem>
             <NavItem icon={<HelpCircle size={18} />} to="/help">
               Help

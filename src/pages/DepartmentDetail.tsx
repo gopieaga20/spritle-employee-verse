@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import { departments, tools, Department, Tool } from '@/data/mockData';
+import { departments, tools, Department, Tool, incrementToolUsage } from '@/data/mockData';
 import { useBookmarks } from '@/context/BookmarkContext';
 import { ArrowLeft, ExternalLink, Star, StarOff, Library } from 'lucide-react';
+import { toast } from 'sonner';
 
 const DepartmentDetail = () => {
   const { departmentId } = useParams<{ departmentId: string }>();
@@ -93,6 +94,23 @@ interface ToolCardProps {
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark }) => {
+  const handleToolClick = () => {
+    // Track tool usage
+    incrementToolUsage(tool.id);
+    
+    // Verify the URL before opening
+    if (!tool.url || tool.url === '#' || tool.url === 'https://example.com/tool10' || tool.url === 'https://example.com/tool18') {
+      toast.error("This link appears to be broken. Please contact IT support.");
+      return;
+    }
+    
+    // Open the URL in a new tab
+    window.open(tool.url, '_blank');
+    
+    // Provide feedback
+    toast.success(`Opening ${tool.name}...`);
+  };
+
   return (
     <Card className="hover-card">
       <CardHeader className="pb-2">
@@ -128,7 +146,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isBookmarked, toggleBookmark 
       <CardFooter>
         <Button 
           className="w-full"
-          onClick={() => window.open(tool.url, '_blank')}
+          onClick={handleToolClick}
         >
           <ExternalLink className="h-4 w-4 mr-2" />
           Go to Tool

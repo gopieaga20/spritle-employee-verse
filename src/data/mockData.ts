@@ -1,4 +1,3 @@
-
 // Department interface
 export interface Department {
   id: string;
@@ -16,7 +15,32 @@ export interface Tool {
   url: string;
   department: string;
   tags: string[];
+  usageCount?: number; // Adding usage tracking
 }
+
+// Analytics interface for tracking
+export interface AnalyticsData {
+  uniqueVisitors: number;
+  topTools: Tool[];
+  departmentUsage: {
+    departmentId: string;
+    departmentName: string;
+    toolsUsage: {
+      toolId: string;
+      toolName: string;
+      count: number;
+    }[];
+  }[];
+  lastUpdated: string;
+}
+
+// Initial analytics data
+export const initialAnalyticsData: AnalyticsData = {
+  uniqueVisitors: 145,
+  topTools: [],
+  departmentUsage: [],
+  lastUpdated: new Date().toISOString()
+};
 
 // Departments data
 export const departments: Department[] = [
@@ -106,17 +130,19 @@ export const tools: Tool[] = [
     id: "tool-1",
     name: "Spritle Recruit",
     description: "Internal recruitment and candidate management replacing Zoho AI Recruitment",
-    url: "https://example.com/tool1",
+    url: "https://spritle.com/products/spritle-recruit",
     department: "admin-hrm",
-    tags: ["Recruitment", "HR", "Candidate Management"]
+    tags: ["Recruitment", "HR", "Candidate Management"],
+    usageCount: 78
   },
   {
     id: "tool-2",
     name: "HR Assistant",
     description: "AI-powered employee onboarding and documentation assistant",
-    url: "https://example.com/tool2",
+    url: "https://spritle.com/products/hr-assistant",
     department: "admin-hrm",
-    tags: ["Onboarding", "Documentation", "HR"]
+    tags: ["Onboarding", "Documentation", "HR"],
+    usageCount: 92
   },
   
   // Sales tools
@@ -299,3 +325,65 @@ export const tools: Tool[] = [
     tags: ["Security", "Analysis", "Cloud"]
   }
 ];
+
+// Function to track tool usage
+export const incrementToolUsage = (toolId: string): void => {
+  const tool = tools.find(t => t.id === toolId);
+  if (tool) {
+    tool.usageCount = (tool.usageCount || 0) + 1;
+    
+    // Update localStorage to persist the data
+    localStorage.setItem('toolUsage', JSON.stringify(
+      tools.map(t => ({ id: t.id, count: t.usageCount || 0 }))
+    ));
+    
+    // Update last activity timestamp
+    localStorage.setItem('lastAnalyticsUpdate', new Date().toISOString());
+  }
+};
+
+// Function to get top used tools
+export const getTopTools = (count: number = 3): Tool[] => {
+  return [...tools]
+    .sort((a, b) => (b.usageCount || 0) - (a.usageCount || 0))
+    .slice(0, count);
+};
+
+// Function to get usage by department
+export const getUsageByDepartment = () => {
+  const departmentUsage = departments.map(dept => {
+    const deptTools = tools.filter(tool => tool.department === dept.id);
+    
+    return {
+      departmentId: dept.id,
+      departmentName: dept.name,
+      toolsUsage: deptTools.map(tool => ({
+        toolId: tool.id,
+        toolName: tool.name,
+        count: tool.usageCount || 0
+      }))
+    };
+  });
+  
+  return departmentUsage;
+};
+
+// Function to verify all tool links are valid
+export const verifyLinks = async (): Promise<{valid: string[], invalid: string[]}> => {
+  const validLinks: string[] = [];
+  const invalidLinks: string[] = [];
+  
+  // In a real implementation this would make actual HTTP requests
+  // For demo purposes, we'll just simulate some invalid links
+  const simulatedInvalidToolIds = ['tool-10', 'tool-18'];
+  
+  for (const tool of tools) {
+    if (simulatedInvalidToolIds.includes(tool.id)) {
+      invalidLinks.push(tool.id);
+    } else {
+      validLinks.push(tool.id);
+    }
+  }
+  
+  return { valid: validLinks, invalid: invalidLinks };
+};

@@ -1,12 +1,16 @@
 
+import { v4 as uuidv4 } from 'uuid';
+
+// Department interface
 export interface Department {
   id: string;
   name: string;
-  icon: string;
   description: string;
+  icon: string;
   color: string;
 }
 
+// Tool interface
 export interface Tool {
   id: string;
   name: string;
@@ -16,370 +20,284 @@ export interface Tool {
   tags: string[];
 }
 
+// Departments data
 export const departments: Department[] = [
   {
-    id: 'administrative',
-    name: 'Administrative & HRM',
-    icon: 'building',
-    description: 'HR management and administrative tools',
-    color: 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300',
+    id: "admin-hrm",
+    name: "Administrative & HRM",
+    description: "Internal tools replacing Zoho AI Recruitment and Recruiter AI for HR processes",
+    icon: "building",
+    color: "text-blue-500 bg-blue-100 dark:bg-blue-900 dark:text-blue-300"
   },
   {
-    id: 'sales',
-    name: 'Sales',
-    icon: 'trending-up',
-    description: 'Sales automation and lead management',
-    color: 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300',
+    id: "sales",
+    name: "Sales",
+    description: "CRM and lead generation tools replacing Clay AI, Seamless AI, and Apollo AI",
+    icon: "trending-up",
+    color: "text-green-500 bg-green-100 dark:bg-green-900 dark:text-green-300"
   },
   {
-    id: 'marketing',
-    name: 'Marketing',
-    icon: 'megaphone',
-    description: 'Marketing automation and analytics',
-    color: 'bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300',
+    id: "marketing",
+    name: "Marketing",
+    description: "Marketing automation replacing HubSpot AI, Zapier, and Notion AI",
+    icon: "megaphone",
+    color: "text-purple-500 bg-purple-100 dark:bg-purple-900 dark:text-purple-300"
   },
   {
-    id: 'finance',
-    name: 'Finance & Accountants',
-    icon: 'dollar-sign',
-    description: 'Financial management and accounting',
-    color: 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300',
+    id: "finance",
+    name: "Finance & Accountants",
+    description: "Financial tools replacing Booke AI, Canopy AI, Digits AI, Karbon AI, and Keeper AI",
+    icon: "dollar-sign",
+    color: "text-emerald-500 bg-emerald-100 dark:bg-emerald-900 dark:text-emerald-300"
   },
   {
-    id: 'support',
-    name: 'Technical Support',
-    icon: 'help-circle',
-    description: 'Customer and technical support tools',
-    color: 'bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300',
+    id: "support",
+    name: "Technical Support / Customer Support",
+    description: "Internal support tools replacing Zendesk AI and Freshworks AI",
+    icon: "help-circle",
+    color: "text-yellow-500 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300"
   },
   {
-    id: 'presales',
-    name: 'Pre-Sales / Solutions',
-    icon: 'puzzle',
-    description: 'Solutions architecture and pre-sales tools',
-    color: 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300',
+    id: "pre-sales",
+    name: "Pre-Sales / Solutions Architecture",
+    description: "Client-focused solutions replacing Crystal Knows and Tact.ai",
+    icon: "puzzle",
+    color: "text-orange-500 bg-orange-100 dark:bg-orange-900 dark:text-orange-300"
   },
   {
-    id: 'business',
-    name: 'Business Analyst',
-    icon: 'bar-chart-2',
-    description: 'Business analysis and reporting tools',
-    color: 'bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300',
+    id: "business-analyst",
+    name: "Business Analyst",
+    description: "Data analysis tools replacing Userstorygenerator AI, Taskade AI, and Scribe AI",
+    icon: "bar-chart-2",
+    color: "text-red-500 bg-red-100 dark:bg-red-900 dark:text-red-300"
   },
   {
-    id: 'development',
-    name: 'Software Development',
-    icon: 'code',
-    description: 'Software development and DevOps tools',
-    color: 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300',
+    id: "development",
+    name: "Software Development",
+    description: "Developer tools replacing GitHub Copilot, Tabnine, Replit, and CodeAssist AI",
+    icon: "code",
+    color: "text-indigo-500 bg-indigo-100 dark:bg-indigo-900 dark:text-indigo-300"
   },
   {
-    id: 'qa',
-    name: 'QA / Testing',
-    icon: 'check-circle',
-    description: 'Quality assurance and testing tools',
-    color: 'bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300',
+    id: "qa-testing",
+    name: "QA / Testing",
+    description: "Testing automation replacing LamdaTest, TestRigor, and TestCraft",
+    icon: "check-circle",
+    color: "text-pink-500 bg-pink-100 dark:bg-pink-900 dark:text-pink-300"
   },
   {
-    id: 'data',
-    name: 'Data Scientists & Analysts',
-    icon: 'database',
-    description: 'Data science and analytics tools',
-    color: 'bg-lime-100 dark:bg-lime-900 text-lime-700 dark:text-lime-300',
+    id: "data-science",
+    name: "Data Scientists & Analysts",
+    description: "Data platforms replacing Tableau AI, Powerdrill AI, Julius AI, and Power BI Copilot",
+    icon: "database",
+    color: "text-cyan-500 bg-cyan-100 dark:bg-cyan-900 dark:text-cyan-300"
   },
   {
-    id: 'cloud',
-    name: 'Cloud Engineering',
-    icon: 'cloud',
-    description: 'Cloud infrastructure and DevOps tools',
-    color: 'bg-teal-100 dark:bg-teal-900 text-teal-700 dark:text-teal-300',
+    id: "cloud",
+    name: "Cloud Engineering",
+    description: "Cloud management tools replacing AWS AI and Azure AI",
+    icon: "cloud",
+    color: "text-sky-500 bg-sky-100 dark:bg-sky-900 dark:text-sky-300"
   }
 ];
 
+// Tools data - generating mock tools for each department
 export const tools: Tool[] = [
-  // Administrative & HRM
+  // Administrative & HRM tools
   {
-    id: 'admin1',
-    name: 'HR Assistant AI',
-    description: 'AI-powered HR management system for employee records, onboarding, and performance reviews',
-    url: 'https://example.com/hr-assistant-ai',
-    department: 'administrative',
-    tags: ['HR', 'Employee Management', 'Onboarding']
+    id: uuidv4(),
+    name: "Spritle Recruit",
+    description: "Internal recruitment and candidate management replacing Zoho AI Recruitment",
+    url: "https://example.com/tool1",
+    department: "admin-hrm",
+    tags: ["Recruitment", "HR", "Candidate Management"]
   },
   {
-    id: 'admin2',
-    name: 'Document AI',
-    description: 'Automated document processing and management with AI-powered text extraction',
-    url: 'https://example.com/document-ai',
-    department: 'administrative',
-    tags: ['Document Processing', 'AI', 'OCR']
-  },
-  {
-    id: 'admin3',
-    name: 'Payroll Automator',
-    description: 'Automated payroll processing with tax calculation and compliance checks',
-    url: 'https://example.com/payroll-automator',
-    department: 'administrative',
-    tags: ['Payroll', 'Automation', 'Finance']
+    id: uuidv4(),
+    name: "HR Assistant",
+    description: "AI-powered employee onboarding and documentation assistant",
+    url: "https://example.com/tool2",
+    department: "admin-hrm",
+    tags: ["Onboarding", "Documentation", "HR"]
   },
   
-  // Sales
+  // Sales tools
   {
-    id: 'sales1',
-    name: 'Lead Predictor',
-    description: 'AI-powered lead scoring and opportunity prediction',
-    url: 'https://example.com/lead-predictor',
-    department: 'sales',
-    tags: ['Lead Scoring', 'AI', 'Prediction']
+    id: uuidv4(),
+    name: "Spritle Leads",
+    description: "Internal lead generation and enrichment platform replacing Clay AI",
+    url: "https://example.com/tool3",
+    department: "sales",
+    tags: ["Leads", "CRM", "Sales"]
   },
   {
-    id: 'sales2',
-    name: 'Sales Copilot',
-    description: 'AI assistant for sales reps to automate follow-ups and generate proposals',
-    url: 'https://example.com/sales-copilot',
-    department: 'sales',
-    tags: ['Sales Automation', 'AI', 'Proposals']
-  },
-  {
-    id: 'sales3',
-    name: 'Call Analyzer',
-    description: 'AI-powered call analysis for sales calls with insights and coaching',
-    url: 'https://example.com/call-analyzer',
-    department: 'sales',
-    tags: ['Call Analysis', 'AI', 'Coaching']
+    id: uuidv4(),
+    name: "Sales Predictor",
+    description: "Sales forecasting and pipeline management replacing Apollo AI",
+    url: "https://example.com/tool4",
+    department: "sales",
+    tags: ["Forecasting", "Pipeline", "Analytics"]
   },
   
-  // Marketing
+  // Marketing tools
   {
-    id: 'marketing1',
-    name: 'Content Generator',
-    description: 'AI-powered content generation for marketing materials',
-    url: 'https://example.com/content-generator',
-    department: 'marketing',
-    tags: ['Content', 'AI', 'Generation']
+    id: uuidv4(),
+    name: "Campaign Manager",
+    description: "Marketing campaign automation and analysis replacing HubSpot AI",
+    url: "https://example.com/tool5",
+    department: "marketing",
+    tags: ["Campaigns", "Automation", "Analytics"]
   },
   {
-    id: 'marketing2',
-    name: 'Campaign Optimizer',
-    description: 'AI-powered campaign optimization with A/B testing and analytics',
-    url: 'https://example.com/campaign-optimizer',
-    department: 'marketing',
-    tags: ['Campaigns', 'A/B Testing', 'Analytics']
-  },
-  {
-    id: 'marketing3',
-    name: 'Social Media Assistant',
-    description: 'AI tool for scheduling and optimizing social media content',
-    url: 'https://example.com/social-media-assistant',
-    department: 'marketing',
-    tags: ['Social Media', 'Scheduling', 'Analytics']
+    id: uuidv4(),
+    name: "Content Generator",
+    description: "AI-powered content creation and optimization for marketing",
+    url: "https://example.com/tool6",
+    department: "marketing",
+    tags: ["Content", "SEO", "Copywriting"]
   },
   
-  // Finance
+  // Finance tools
   {
-    id: 'finance1',
-    name: 'Expense Analyzer',
-    description: 'AI-powered expense analysis and categorization',
-    url: 'https://example.com/expense-analyzer',
-    department: 'finance',
-    tags: ['Expenses', 'Analytics', 'Categorization']
+    id: uuidv4(),
+    name: "Finance Assistant",
+    description: "Automated bookkeeping and financial reporting replacing Booke AI",
+    url: "https://example.com/tool7",
+    department: "finance",
+    tags: ["Bookkeeping", "Reporting", "Finance"]
   },
   {
-    id: 'finance2',
-    name: 'Invoice Processor',
-    description: 'Automated invoice processing with AI-powered data extraction',
-    url: 'https://example.com/invoice-processor',
-    department: 'finance',
-    tags: ['Invoices', 'AI', 'Data Extraction']
-  },
-  {
-    id: 'finance3',
-    name: 'Financial Forecaster',
-    description: 'AI-powered financial forecasting and planning',
-    url: 'https://example.com/financial-forecaster',
-    department: 'finance',
-    tags: ['Forecasting', 'Planning', 'Analytics']
+    id: uuidv4(),
+    name: "Tax Helper",
+    description: "Tax preparation and compliance tool replacing Keeper AI",
+    url: "https://example.com/tool8",
+    department: "finance",
+    tags: ["Tax", "Compliance", "Finance"]
   },
   
-  // Technical Support
+  // Support tools
   {
-    id: 'support1',
-    name: 'Ticket Classifier',
-    description: 'AI-powered ticket classification and routing',
-    url: 'https://example.com/ticket-classifier',
-    department: 'support',
-    tags: ['Classification', 'AI', 'Routing']
+    id: uuidv4(),
+    name: "Support Bot",
+    description: "Customer support automation replacing Zendesk AI",
+    url: "https://example.com/tool9",
+    department: "support",
+    tags: ["Support", "Automation", "Customer Service"]
   },
   {
-    id: 'support2',
-    name: 'Knowledge Assistant',
-    description: 'AI-powered knowledge base assistant for customer support',
-    url: 'https://example.com/knowledge-assistant',
-    department: 'support',
-    tags: ['Knowledge Base', 'AI', 'Support']
-  },
-  {
-    id: 'support3',
-    name: 'Customer Feedback Analyzer',
-    description: 'AI-powered analysis of customer feedback and sentiment',
-    url: 'https://example.com/feedback-analyzer',
-    department: 'support',
-    tags: ['Feedback', 'Sentiment Analysis', 'AI']
+    id: uuidv4(),
+    name: "Ticket Analyzer",
+    description: "Support ticket classification and prioritization",
+    url: "https://example.com/tool10",
+    department: "support",
+    tags: ["Tickets", "Analysis", "Support"]
   },
   
-  // Pre-Sales / Solutions
+  // Pre-Sales tools
   {
-    id: 'presales1',
-    name: 'Solution Architect',
-    description: 'AI-powered solution architecture and design assistant',
-    url: 'https://example.com/solution-architect',
-    department: 'presales',
-    tags: ['Architecture', 'AI', 'Design']
+    id: uuidv4(),
+    name: "Client Insights",
+    description: "Client personality and preference analysis replacing Crystal Knows",
+    url: "https://example.com/tool11",
+    department: "pre-sales",
+    tags: ["Client Analysis", "Insights", "Sales"]
   },
   {
-    id: 'presales2',
-    name: 'Proposal Generator',
-    description: 'AI-powered proposal generation and customization',
-    url: 'https://example.com/proposal-generator',
-    department: 'presales',
-    tags: ['Proposals', 'AI', 'Customization']
-  },
-  {
-    id: 'presales3',
-    name: 'ROI Calculator',
-    description: 'AI-powered ROI calculation and justification',
-    url: 'https://example.com/roi-calculator',
-    department: 'presales',
-    tags: ['ROI', 'Calculation', 'Justification']
+    id: uuidv4(),
+    name: "Solution Builder",
+    description: "Automated solution architecture and proposal generation",
+    url: "https://example.com/tool12",
+    department: "pre-sales",
+    tags: ["Proposals", "Architecture", "Pre-Sales"]
   },
   
-  // Business Analyst
+  // Business Analyst tools
   {
-    id: 'business1',
-    name: 'Requirements Assistant',
-    description: 'AI-powered requirements gathering and documentation',
-    url: 'https://example.com/requirements-assistant',
-    department: 'business',
-    tags: ['Requirements', 'Documentation', 'AI']
+    id: uuidv4(),
+    name: "User Story Creator",
+    description: "Automated user story generation replacing Userstorygenerator AI",
+    url: "https://example.com/tool13",
+    department: "business-analyst",
+    tags: ["User Stories", "Requirements", "Analysis"]
   },
   {
-    id: 'business2',
-    name: 'Process Modeler',
-    description: 'AI-powered business process modeling and optimization',
-    url: 'https://example.com/process-modeler',
-    department: 'business',
-    tags: ['Process', 'Modeling', 'Optimization']
-  },
-  {
-    id: 'business3',
-    name: 'User Story Generator',
-    description: 'AI-powered user story and acceptance criteria generation',
-    url: 'https://example.com/user-story-generator',
-    department: 'business',
-    tags: ['User Stories', 'Acceptance Criteria', 'AI']
+    id: uuidv4(),
+    name: "Process Mapper",
+    description: "Business process documentation and analysis replacing Scribe AI",
+    url: "https://example.com/tool14",
+    department: "business-analyst",
+    tags: ["Process Mapping", "Documentation", "Analysis"]
   },
   
-  // Software Development
+  // Development tools
   {
-    id: 'development1',
-    name: 'Code Assistant',
-    description: 'AI-powered code generation and completion',
-    url: 'https://example.com/code-assistant',
-    department: 'development',
-    tags: ['Code', 'AI', 'Generation']
+    id: uuidv4(),
+    name: "Code Assistant",
+    description: "Code completion and suggestion tool replacing GitHub Copilot",
+    url: "https://example.com/tool15",
+    department: "development",
+    tags: ["Coding", "AI", "Development"]
   },
   {
-    id: 'development2',
-    name: 'Bug Predictor',
-    description: 'AI-powered bug prediction and prevention',
-    url: 'https://example.com/bug-predictor',
-    department: 'development',
-    tags: ['Bugs', 'AI', 'Prevention']
-  },
-  {
-    id: 'development3',
-    name: 'Code Reviewer',
-    description: 'AI-powered code review and quality analysis',
-    url: 'https://example.com/code-reviewer',
-    department: 'development',
-    tags: ['Code Review', 'Quality', 'AI']
+    id: uuidv4(),
+    name: "Code Reviewer",
+    description: "Automated code review and quality assurance",
+    url: "https://example.com/tool16",
+    department: "development",
+    tags: ["Code Review", "Quality", "Development"]
   },
   
-  // QA / Testing
+  // QA tools
   {
-    id: 'qa1',
-    name: 'Test Generator',
-    description: 'AI-powered test case generation and optimization',
-    url: 'https://example.com/test-generator',
-    department: 'qa',
-    tags: ['Test Cases', 'AI', 'Generation']
+    id: uuidv4(),
+    name: "Test Generator",
+    description: "Automated test case generation replacing TestRigor",
+    url: "https://example.com/tool17",
+    department: "qa-testing",
+    tags: ["Testing", "Automation", "QA"]
   },
   {
-    id: 'qa2',
-    name: 'Regression Analyzer',
-    description: 'AI-powered regression test analysis and optimization',
-    url: 'https://example.com/regression-analyzer',
-    department: 'qa',
-    tags: ['Regression', 'Analysis', 'AI']
-  },
-  {
-    id: 'qa3',
-    name: 'Test Automation Assistant',
-    description: 'AI-powered test automation code generation',
-    url: 'https://example.com/test-automation-assistant',
-    department: 'qa',
-    tags: ['Automation', 'AI', 'Generation']
+    id: uuidv4(),
+    name: "Bug Predictor",
+    description: "AI-powered bug prediction and prevention",
+    url: "https://example.com/tool18",
+    department: "qa-testing",
+    tags: ["Bug Detection", "Prevention", "QA"]
   },
   
-  // Data Scientists & Analysts
+  // Data Science tools
   {
-    id: 'data1',
-    name: 'Data Cleaner',
-    description: 'AI-powered data cleaning and preparation',
-    url: 'https://example.com/data-cleaner',
-    department: 'data',
-    tags: ['Data Cleaning', 'AI', 'Preparation']
+    id: uuidv4(),
+    name: "Data Visualizer",
+    description: "Advanced data visualization platform replacing Tableau AI",
+    url: "https://example.com/tool19",
+    department: "data-science",
+    tags: ["Visualization", "Analytics", "Data"]
   },
   {
-    id: 'data2',
-    name: 'Model Builder',
-    description: 'AI-powered machine learning model building and optimization',
-    url: 'https://example.com/model-builder',
-    department: 'data',
-    tags: ['Machine Learning', 'Models', 'AI']
-  },
-  {
-    id: 'data3',
-    name: 'Insight Generator',
-    description: 'AI-powered data analysis and insight generation',
-    url: 'https://example.com/insight-generator',
-    department: 'data',
-    tags: ['Analysis', 'Insights', 'AI']
+    id: uuidv4(),
+    name: "Insight Generator",
+    description: "Automated data insights and reporting replacing Power BI Copilot",
+    url: "https://example.com/tool20",
+    department: "data-science",
+    tags: ["Insights", "Reporting", "Analytics"]
   },
   
-  // Cloud Engineering
+  // Cloud tools
   {
-    id: 'cloud1',
-    name: 'Infrastructure Designer',
-    description: 'AI-powered cloud infrastructure design and optimization',
-    url: 'https://example.com/infrastructure-designer',
-    department: 'cloud',
-    tags: ['Infrastructure', 'Cloud', 'AI']
+    id: uuidv4(),
+    name: "Cloud Optimizer",
+    description: "AI-driven cloud resource optimization replacing AWS AI",
+    url: "https://example.com/tool21",
+    department: "cloud",
+    tags: ["Optimization", "Cloud", "Resources"]
   },
   {
-    id: 'cloud2',
-    name: 'Cost Optimizer',
-    description: 'AI-powered cloud cost optimization and recommendations',
-    url: 'https://example.com/cost-optimizer',
-    department: 'cloud',
-    tags: ['Cost', 'Optimization', 'AI']
-  },
-  {
-    id: 'cloud3',
-    name: 'Security Analyzer',
-    description: 'AI-powered cloud security analysis and recommendations',
-    url: 'https://example.com/security-analyzer',
-    department: 'cloud',
-    tags: ['Security', 'Analysis', 'AI']
+    id: uuidv4(),
+    name: "Security Analyzer",
+    description: "Cloud security posture management and analysis",
+    url: "https://example.com/tool22",
+    department: "cloud",
+    tags: ["Security", "Analysis", "Cloud"]
   }
 ];

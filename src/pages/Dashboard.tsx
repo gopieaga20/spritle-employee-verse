@@ -10,12 +10,12 @@ import {
   DollarSign, 
   HelpCircle,
   Code,
-  PuzzlePiece,
+  Puzzle, // Changed from PuzzlePiece
   BarChart2,
   CheckCircle,
   Database,
   Cloud,
-  SpeakerLoud
+  Megaphone // Changed from SpeakerLoud
 } from 'lucide-react';
 
 // Map department icons to Lucide components
@@ -23,10 +23,10 @@ const getDepartmentIcon = (iconName: string) => {
   const iconMap: Record<string, React.ReactNode> = {
     'building': <Building className="h-6 w-6" />,
     'trending-up': <TrendingUp className="h-6 w-6" />,
-    'megaphone': <SpeakerLoud className="h-6 w-6" />,
+    'megaphone': <Megaphone className="h-6 w-6" />, // Updated to use available icon
     'dollar-sign': <DollarSign className="h-6 w-6" />,
     'help-circle': <HelpCircle className="h-6 w-6" />,
-    'puzzle': <PuzzlePiece className="h-6 w-6" />,
+    'puzzle': <Puzzle className="h-6 w-6" />, // Updated to use available icon
     'bar-chart-2': <BarChart2 className="h-6 w-6" />,
     'code': <Code className="h-6 w-6" />,
     'check-circle': <CheckCircle className="h-6 w-6" />,
